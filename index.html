@@ -3,16 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
+    <title>Live Cricket Scores</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>URL Shortener</h1>
-        <input type="text" id="urlInput" placeholder="Enter your URL here">
-        <button id="shortenBtn">Shorten</button>
-        <div id="result" class="result"></div>
-    </div>
-    <script src="main.js"></script>
+    <header>
+        <h1>Live Cricket Scores</h1>
+        <img src="India-flag.jpg" alt="India flag">
+    </header>
+
+    <main>
+        <div id="score-frame"><a rel="nofollow" href="https://www.crictimes.org/cricket-scores">Live Cricket Scores</a></div>
+        <script type="text/javascript">
+            var html = document.getElementById('score-frame');
+            html.innerHTML = '<iframe src="https://cwidget.crictimes.org/?v=1.1&a=000000&bo=434343" style="width:100%;min-height: 460px;" frameborder="0" scrolling="yes"></iframe>';
+        </script>
+    </main>
+
+
+    <script>
+        const data = null;
+
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener('readystatechange', function () {
+            if (this.readyState === this.DONE) {
+                console.log(this.responseText);
+            }
+        });
+
+        xhr.open('GET', 'https://livescore6.p.rapidapi.com/matches/v2/get-commentary?Eid=702193');
+        xhr.setRequestHeader('X-RapidAPI-Key', '3fc9aef922mshd15546e15b88ed9p1492f1jsnfb4fc0420ae9');
+        xhr.setRequestHeader('X-RapidAPI-Host', 'livescore6.p.rapidapi.com');
+
+        xhr.send(data);
+    </script>
+    <footer>
+        <p>&copy;  Live Cricket Scores</p>
+    </footer>
 </body>
 </html>
